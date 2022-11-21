@@ -4,6 +4,7 @@ from . import views
 # Add URLConf
 urlpatterns = [
     path('', views.index, name='index'),
+    path('albums/<int:album_id>/', views.album, name='album'),
     path('<int:song_id>/', views.detail, name='detail'),
     path('mymusic/', views.mymusic, name='mymusic'),
     path('playlist/', views.playlist, name='playlist'),
