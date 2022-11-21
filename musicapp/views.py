@@ -29,11 +29,11 @@ def index(request):
             last_played_song = Song.objects.get(id=last_played_id)
         else:
             first_time = True
-            last_played_song = Song.objects.get(id=7)
+            last_played_song = Song.objects.all().first()
 
     else:
         first_time = True
-        last_played_song = Song.objects.get(id=7)
+        last_played_song = Song.objects.all().first()
 
     #Display all songs
     songs = Song.objects.all()
@@ -43,10 +43,10 @@ def index(request):
     sliced_ids = [each['id'] for each in songs_all][:5]
     indexpage_songs = Song.objects.filter(id__in=sliced_ids)
 
-    # Display Hindi Songs
-    songs_hindi = list(Song.objects.filter(language='Hindi').values('id'))
-    sliced_ids = [each['id'] for each in songs_hindi][:5]
-    indexpage_hindi_songs = Song.objects.filter(id__in=sliced_ids)
+    # Display Chinese Songs
+    songs_chinese = list(Song.objects.filter(language='Chinese').values('id'))
+    sliced_ids = [each['id'] for each in songs_chinese][:5]
+    indexpage_chinese_songs = Song.objects.filter(id__in=sliced_ids)
 
     # Display English Songs
     songs_english = list(Song.objects.filter(language='English').values('id'))
@@ -62,7 +62,7 @@ def index(request):
     context = {
         'all_songs':indexpage_songs,
         'recent_songs': recent_songs,
-        'hindi_songs':indexpage_hindi_songs,
+        'chinese_songs':indexpage_chinese_songs,
         'english_songs':indexpage_english_songs,
         'last_played':last_played_song,
         'first_time': first_time,
@@ -71,9 +71,9 @@ def index(request):
     return render(request, 'musicapp/index.html', context=context)
 
 
-def hindi_songs(request):
+def chinese_songs(request):
 
-    hindi_songs = Song.objects.filter(language='Hindi')
+    chinese_songs = Song.objects.filter(language='Chinese')
 
     #Last played song
     last_played_list = list(Recent.objects.values('song_id').order_by('-id'))
@@ -81,17 +81,17 @@ def hindi_songs(request):
         last_played_id = last_played_list[0]['song_id']
         last_played_song = Song.objects.get(id=last_played_id)
     else:
-        last_played_song = Song.objects.get(id=7)
+        last_played_song = Song.objects.all().first()
 
     query = request.GET.get('q')
 
     if query:
-        hindi_songs = Song.objects.filter(Q(name__icontains=query)).distinct()
-        context = {'hindi_songs': hindi_songs}
-        return render(request, 'musicapp/hindi_songs.html', context)
+        chinese_songs = Song.objects.filter(Q(name__icontains=query)).distinct()
+        context = {'chinese_songs': chinese_songs}
+        return render(request, 'musicapp/chinese_songs.html', context)
 
-    context = {'hindi_songs':hindi_songs,'last_played':last_played_song}
-    return render(request, 'musicapp/hindi_songs.html',context=context)
+    context = {'chinese_songs':chinese_songs,'last_played':last_played_song}
+    return render(request, 'musicapp/chinese_songs.html',context=context)
 
 
 def english_songs(request):
@@ -104,7 +104,7 @@ def english_songs(request):
         last_played_id = last_played_list[0]['song_id']
         last_played_song = Song.objects.get(id=last_played_id)
     else:
-        last_played_song = Song.objects.get(id=7)
+        last_played_song = Song.objects.all().first()
 
     query = request.GET.get('q')
 
@@ -163,7 +163,7 @@ def all_songs(request):
             last_played_song = Song.objects.get(id=last_played_id)
     else:
         first_time = True
-        last_played_song = Song.objects.get(id=7)
+        last_played_song = Song.objects.all().first()
 
     
     # apply search filters
@@ -206,7 +206,7 @@ def recent(request):
         last_played_id = last_played_list[0]['song_id']
         last_played_song = Song.objects.get(id=last_played_id)
     else:
-        last_played_song = Song.objects.get(id=7)
+        last_played_song = Song.objects.all().first()
 
     #Display recent songs
     recent = list(Recent.objects.filter(user=request.user).values('song_id').order_by('-id'))
@@ -246,7 +246,7 @@ def detail(request, song_id):
         last_played_id = last_played_list[0]['song_id']
         last_played_song = Song.objects.get(id=last_played_id)
     else:
-        last_played_song = Song.objects.get(id=7)
+        last_played_song = Song.objects.all().first()
 
 
     playlists = Playlist.objects.filter(user=request.user).values('playlist_name').distinct

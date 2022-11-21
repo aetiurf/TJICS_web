@@ -17,6 +17,6 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='song',
             name='language',
-            field=models.CharField(choices=[('Hindi', 'Hindi'), ('English', 'English')], default='Hindi', max_length=20),
+            field=models.CharField(choices=[('Chinese', 'Chinese'), ('English', 'English')], default='Chinese', max_length=20),
         ),
     ]

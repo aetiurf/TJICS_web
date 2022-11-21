@@ -40,7 +40,7 @@
   {% for song in recent_songs %}
       <div class="col-md-2">
           <div class="hovereffect">
-            <img src="{{ song.song_img.url}}" class="img-responsive" height="135" width="135" style="border-radius: 8px 8px 8px 8px;">
+            <img src="{{ song.album.cover.url}}" class="img-responsive" height="135" width="135" style="border-radius: 8px 8px 8px 8px;">
             <div class="overlay">
                 <a class="btn btn-outline-light mt-5 mx-1" href="{% url 'play_song_index' song.id %}"><i class="fa fa-play" aria-hidden="true"></i></a>
                 <a class="btn btn-outline-light mt-5 mx-1" href="{% url 'detail' song.id %}"><i class="fa fa-info-circle" aria-hidden="true"></i></a>
@@ -73,7 +73,7 @@
   {% for song in all_songs %}
       <div class="col-md-2">
           <div class="hovereffect">
-            <img src="{{ song.song_img.url}}" class="img-responsive" height="135" width="135" style="border-radius: 8px 8px 8px 8px;">
+            <img src="{{ song.album.cover.url}}" class="img-responsive" height="135" width="135" style="border-radius: 8px 8px 8px 8px;">
             <div class="overlay">
                 <a class="btn btn-outline-light mt-5 mx-1" href="{% url 'play_song_index' song.id %}"><i class="fa fa-play" aria-hidden="true"></i></a>
                 <a class="btn btn-outline-light mt-5 mx-1" href="{% url 'detail' song.id %}"><i class="fa fa-info-circle" aria-hidden="true"></i></a>
@@ -90,20 +90,20 @@
 <br>
 
 
-<!-- Hindi Songs -->
+<!-- Chinese Songs -->
 {% if not query_search %}
   <header class="section-heading">
-    <h5 class="section-title">HINDI SONGS</h5>
+    <h5 class="section-title">CHINESE SONGS</h5>
   </header>
 <hr>
 {% endif %}
 <!-- Song list -->
 <div class="row" style="margin-right: 65px;margin-left:-15px">
-  {% if hindi_songs %}
-  {% for song in hindi_songs %}
+  {% if chinese_songs %}
+  {% for song in chinese_songs %}
       <div class="col-md-2">
           <div class="hovereffect">
-            <img src="{{ song.song_img.url}}" class="img-responsive" height="135" width="135" style="border-radius: 8px 8px 8px 8px;">
+            <img src="{{ song.album.cover.url}}" class="img-responsive" height="135" width="135" style="border-radius: 8px 8px 8px 8px;">
             <div class="overlay">
                 <a class="btn btn-outline-light mt-5 mx-1" href="{% url 'play_song_index' song.id %}"><i class="fa fa-play" aria-hidden="true"></i></a>
                 <a class="btn btn-outline-light mt-5 mx-1" href="{% url 'detail' song.id %}"><i class="fa fa-info-circle" aria-hidden="true"></i></a>
@@ -113,7 +113,7 @@
       {% endfor %}
       {% endif %}
       {% if not query_search %}
-      <a href="{% url 'hindi_songs' %}" class="btn btn-primary float-right" style="height: 135px;"><center style="margin-top: 45px;">View all <i class="fa fa-arrow-right" aria-hidden="true"></i></center></a>
+      <a href="{% url 'chinese_songs' %}" class="btn btn-primary float-right" style="height: 135px;"><center style="margin-top: 45px;">View all <i class="fa fa-arrow-right" aria-hidden="true"></i></center></a>
       {% endif %}
 </div>
 <br>
@@ -132,7 +132,7 @@
   {% for song in english_songs %}
       <div class="col-md-2">
           <div class="hovereffect">
-            <img src="{{ song.song_img.url}}" class="img-responsive" height="135" width="135" style="border-radius: 8px 8px 8px 8px;">
+            <img src="{{ song.album.cover.url}}" class="img-responsive" height="135" width="135" style="border-radius: 8px 8px 8px 8px;">
             <div class="overlay">
                 <a class="btn btn-outline-light mt-5 mx-1" href="{% url 'play_song_index' song.id %}"><i class="fa fa-play" aria-hidden="true"></i></a>
                 <a class="btn btn-outline-light mt-5 mx-1" href="{% url 'detail' song.id %}"><i class="fa fa-info-circle" aria-hidden="true"></i></a>
@@ -154,11 +154,11 @@
 
 <footer class="footer">
     <div class="player" style="padding-left: 10px;padding-top:10px;background-color: #459dfb;">
-      <div class="left"><img src="{{last_played.song_img.url}}" height="90" width="90" style="border-radius: 10px 10px 10px 10px;"></div>
+      <div class="left"><img src="{{last_played.album.cover.url}}" height="90" width="90" style="border-radius: 10px 10px 10px 10px;"></div>
       <div class="right">
          <div class="top">
             <a class="song" style="margin-left: 15px;color: white;">{{last_played.name}}</a>
-            <a class="artist" style="margin-left: 15px;color:white">{{last_played.album}}</a>
+            <a class="artist" style="margin-left: 15px;color:white">{{last_played.album.name}}</a>
          </div>
          <div class="bottom">
           {% if first_time %}

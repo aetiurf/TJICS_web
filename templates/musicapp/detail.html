@@ -31,7 +31,7 @@
                 <div class="preview col-md-5">
 
                     <div class="preview-pic tab-content">
-                        <div class="tab-pane active"><img src="{{songs.song_img.url}}" height="300" width="300"
+                        <div class="tab-pane active"><img src="{{songs.album.cover.url}}" height="300" width="300"
                                 style="padding:20px;border-radius: 60px 60px 60px 60px;"></div>
                     </div>
 
@@ -39,9 +39,9 @@
                 <div class="details col-md-6">
                     <br>
                     <h3 class="product-title">{{songs.name}}</h3>
-                    <h6>Album: {{songs.album}}</h6>
-                    <h6>Singer: {{songs.singer}}</h6>
-                    <h6>Release Year: {{songs.year}}</h6>
+                    <h6>Album: {{songs.album.name}}</h6>
+                    <h6>Singer: {{songs.album.singer}}</h6>
+                    <h6>Release Year: {{songs.album.year}}</h6>
                     <br>
                     <!-- <audio controls>
                         <source src="{{ songs.song_file.url }}" type="audio/mpeg">
@@ -123,12 +123,12 @@
 
 <footer class="footer">
     <div class="player" style="padding-left: 10px;padding-top:10px;background-color: #459dfb;">
-        <div class="left"><img src="{{last_played.song_img.url}}" height="90" width="90"
+        <div class="left"><img src="{{last_played.album.cover.url}}" height="90" width="90"
                 style="border-radius: 10px 10px 10px 10px;"></div>
         <div class="right">
             <div class="top">
                 <a class="song" style="margin-left: 15px;color: white;">{{last_played.name}}</a>
-                <a class="artist" style="margin-left: 15px;color:white">{{last_played.album}}</a>
+                <a class="artist" style="margin-left: 15px;color:white">{{last_played.album.name}}</a>
             </div>
             <div class="bottom">
                 <audio controls="" _autoplay="" name="media"

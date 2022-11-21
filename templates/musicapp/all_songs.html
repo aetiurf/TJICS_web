@@ -56,7 +56,7 @@
     {% for song in songs %}
     <div class="col-sm-2 col-md-2" style="padding-bottom: 15px;">
       <div class="hovereffect">
-        <img src="{{ song.song_img.url}}" class="img-responsive" height="135" width="135"
+        <img src="{{ song.album.cover.url}}" class="img-responsive" height="135" width="135"
           style="border-radius: 8px 8px 8px 8px;">
         <div class="overlay">
           <a class="btn btn-outline-light mt-5 mx-1" href="{% url 'play_song' song.id %}"><i class="fa fa-play"
@@ -79,11 +79,11 @@
 <br>
 <footer class="footer">
   <div class="player" style="padding-left: 10px;padding-top:10px;background-color: #459dfb;">
-    <div class="left"><img src="{{last_played.song_img.url}}" height="90" width="90" style="border-radius: 10px 10px 10px 10px;"></div>
+    <div class="left"><img src="{{last_played.album.cover.url}}" height="90" width="90" style="border-radius: 10px 10px 10px 10px;"></div>
     <div class="right">
        <div class="top">
           <a class="song" style="margin-left: 15px;color: white;">{{last_played.name}}</a>
-          <a class="artist" style="margin-left: 15px;color:white">{{last_played.album}}</a>
+          <a class="artist" style="margin-left: 15px;color:white">{{last_played.album.name}}</a>
        </div>
        <div class="bottom">
         {% if first_time %}

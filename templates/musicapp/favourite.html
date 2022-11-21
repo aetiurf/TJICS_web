@@ -42,8 +42,8 @@
     <tr>
       <th scope="row">{{forloop.counter}}</th>
       <td><a href="{% url 'detail' song.id %}">{{song.name}}</a></td>
-      <td>{{song.album}}</td>
-      <td>{{song.singer}}</td>
+      <td>{{song.album.name}}</td>
+      <td>{{song.album.singer}}</td>
       <td>
         <audio controls>
           <source src="{{ song.song_file.url }}" type="audio/mpeg">
