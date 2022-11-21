@@ -1,13 +1,10 @@
-# Create your views here.
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from .forms import UserLoginForm, RegistrationForm
-from django.http import JsonResponse
 
 
 # Create your views here.
 def login_request(request):
-    # TODO backend return json
     title = "Login"
     form = UserLoginForm(request.POST or None)
     context = {
@@ -21,18 +18,14 @@ def login_request(request):
 
         login(request, user)
         # messages.info(request, f"You are now logged in  as {user}")
-        # return redirect('index')
-        return JsonResponse({'foo':'bar'})
+        return redirect('index')
     else:
         print(form.errors)
         # messages.error(request, 'Username or Password is Incorrect! ')
-    # return render(request, 'authentication/login.html', context=context)
-    return JsonResponse({'foo':'bar'})
-
+    return render(request, 'authentication/login.html', context=context)
 
 
 def signup_request(request):
-    # TODO backend return json
     title = "Create Account"
     if request.method == "POST":
         form = RegistrationForm(request.POST)
@@ -43,13 +36,10 @@ def signup_request(request):
         form = RegistrationForm()
 
     context = {'form': form, 'title': title}
-    return JsonResponse({'foo':'bar'})
-    # return render(request, 'authentication/signup.html', context=context)
+    return render(request, 'authentication/signup.html', context=context)
 
 
 def logout_request(request):
-    # TODO backend return json
     logout(request)
     # messages.info(request, "Logged out successfully!")
-    # return redirect('index')
-    return JsonResponse({'foo':'bar'})
+    return redirect('index')
