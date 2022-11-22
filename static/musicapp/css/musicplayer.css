@@ -67,7 +67,7 @@
     color: #fff;
     font-size: 48px;
   } */
-  body .player {
+ body .player {
     z-index: 10;
     background: #F9F9F9;
     color: #000;
@@ -84,6 +84,13 @@
     width: 80px;
     background-image: none;
     background-size: cover;
+    // 动画持续时间
+    animation:rotateImg 5s;
+    //动画播放次数 infinite:无数次；
+    animation-iteration-count:infinite;
+
+    -webkit-animation:rotateImg 5s;
+    -webkit-animation-iteration-count: infinite;
   }
   body .player .right {
     -webkit-box-flex: 1;
@@ -119,7 +126,7 @@
             flex-grow: 1;
     height: 32px;
   }
-  
+
   @-webkit-keyframes pop-in {
     0%, 95% {
       -webkit-transform: translateY(100%);
@@ -130,7 +137,7 @@
               transform: translateY(0%);
     }
   }
-  
+
   @keyframes pop-in {
     0%, 95% {
       -webkit-transform: translateY(100%);
@@ -141,4 +148,12 @@
               transform: translateY(0%);
     }
   }
-  
+  @keyframes rotateImg {
+    0% {transform : rotate(0deg);}
+    100% {transform : rotate(360deg);}
+  }
+
+  @-webkit-keyframes rotateImg {
+      0%{-webkit-transform : rotate(0deg);}
+    100%{-webkit-transform : rotate(360deg);}
+  }
