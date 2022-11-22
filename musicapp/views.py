@@ -194,7 +194,7 @@ def all_songs(request):
         search_singer = request.GET.get('singers') or ''
         search_language = request.GET.get('languages') or ''
         filtered_songs = songs.filter(Q(name__icontains=search_query)).filter(Q(language__icontains=search_language)).filter(
-            Q(singer__icontains=search_singer)).distinct()
+            Q(album__singer__icontains=search_singer)).distinct()
         context = {
             'songs': filtered_songs,
             'last_played': last_played_song,
