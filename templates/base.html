@@ -142,6 +142,7 @@
             <div class="collapse navbar-collapse">
                 <a href="{% url 'index' %}" class="btn btn-outline-light mt-2 mx-1">HOME</a>
                 <a href="{% url 'all_songs' %}" class="btn btn-outline-light mt-2 mx-1">ALL SONGS</a>
+                <a href="{% url 'all_albums' %}" class="btn btn-outline-light mt-2 mx-1">ALL ALBUMS</a>
                 {% if request.user.is_active %}
                 
                 <div class="btn-group mt-2 mx-1">

@@ -11,6 +11,10 @@
 {% endblock header %}
 {% block body %}
 
+
+<br>
+{% if albums %}
+{% for album in albums %}
 <div class="container">
     <div class="card">
         <div class="container-fliud">
@@ -28,40 +32,14 @@
                     <h3 class="product-title">Album:{{album.name}}</h3>
                     <h6>Singer: {{album.singer}}</h6>
                     <h6>Release Year: {{album.year}}</h6>
+                    <a href="{% url 'album' album.id%}" class="btn btn-info mt-2 mx-1">see song lists</a>
                     <br>                                                       
                 </div>
             </div>
         </div>
     </div>
 </div>
-<table class="table table-hover table-primary">
-    <thead>
-      <tr>
-        <th scope="col">#</th>
-        <th scope="col">Song Name</th>
-        <th scope="col">Song</th>
-        <th scope="col">More details</th>
-      </tr>
-    </thead>
-    <tbody>
-      {% if all_songs %}
-      {% for song in all_songs %}
-      <tr>
-        <th scope="row">{{forloop.counter}}</th>
-        <td><a href="{% url 'detail' song.id %}">{{song.name}}</a></td>
-        <td>
-          <audio controls>
-            <source src="{{ song.song_file.url }}" type="audio/mpeg">
-          </audio>
-        </td>
-        <td>
-          <a href="{% url 'detail' song.id%}" class="btn btn-info mt-2 mx-1">see comments</a>
-        </td>
-      </tr>
-      {% endfor %}
-      {% endif %}
-    </tbody>
-  </table>
-
+{% endfor %}
+{% endif %}
 {% endblock body %}
 
