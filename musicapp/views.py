@@ -305,9 +305,9 @@ def detail(request, song_id):
                 comment_user = request.user
                 comment = Comment(text=comment_text, user=comment_user, song=songs, date=time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time())))
                 comment.save()
-                messages.success(request, f"Succeded to comment:{ comment_text}!")
+                messages.success(request, "Succeded to comment!")
             else:
-                messages.error(request, "comments can't be empty")
+                messages.error(request, "Comments can't be empty")
             return redirect('detail', song_id=song_id)
 
     context = {
