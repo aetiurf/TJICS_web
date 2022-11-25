@@ -300,12 +300,14 @@ def detail(request, song_id):
             messages.success(request, "Removed from favorite!")
             return redirect('detail', song_id=song_id)
         elif 'comment' in request.POST:
-            comment_text = request.POST.get('comment', '')
-            comment_user = request.user
+            comment_text = request.POST.get('comment', '')           
             if comment_text:
-                comment = Comment(text=comment_text, user=comment_user, song=songs, date=time.strftime('%Y-%m-%d', time.localtime(time.time())))
+                comment_user = request.user
+                comment = Comment(text=comment_text, user=comment_user, song=songs, date=time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time())))
                 comment.save()
-            messages.success(request, "Succeded to comment!")
+                messages.success(request, "Succeded to comment!")
+            else:
+                messages.error(request, "Comments can't be empty")
             return redirect('detail', song_id=song_id)
 
     context = {
@@ -317,6 +319,12 @@ def detail(request, song_id):
     }
     return render(request, 'musicapp/detail.html', context=context)
 
+def all_albums(request):
+    album = Album.objects.all()       
+    context = {
+        'albums': album,
+    }
+    return render(request, 'musicapp/all_albums.html', context=context)
 
 def album(request, album_id):
     album = Album.objects.filter(id=album_id).first()
@@ -361,6 +369,7 @@ def favourite(request):
     songs = Song.objects.filter(favourite__user=request.user, favourite__is_fav=True).distinct()
     print(f'songs: {songs}')
 
+    
     if request.method == "POST":
         song_id = list(request.POST.keys())[1]
         favourite_song = Favourite.objects.filter(user=request.user, song__id=song_id, is_fav=True)

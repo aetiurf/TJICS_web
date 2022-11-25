@@ -14,12 +14,22 @@
 {% if messages %}
 <ul class="messages" style="width: 600px;margin-left:400px">
     {% for message in messages %}
-    <div class="alert alert-success">
-        <strong>Success!</strong> {{message}}
+    {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+    <!--!!!!!!-->
+    <div class="alert alert-danger">
+        <strong>Failed!</strong> {{message}}
         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
             <span aria-hidden="true">&times;</span>
-        </button>
+        </button>    
     </div>
+    {% else %}
+    <div class="alert alert-success">
+    <strong>Success!</strong> {{message}}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>   
+    </div>   
+        {% endif %}
     {% endfor %}
 </ul>
 {% endif %}
@@ -112,14 +122,48 @@
 
                         {% endif %}
                     </form>
-
-
-
+                    
+                    
                 </div>
             </div>
         </div>
     </div>
 </div>
+<!--!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!-->
+<div class="comment_submit">
+    <form method="post">
+        {% csrf_token %}
+        <span class="d-flex align-items-center mt-2 ml-2">
+            <!-- <i class="heart fa fa-heart my-auto"></i> -->
+            <span>comments</span><textarea name="comment" id="comment" cols="60" rows="6"></textarea>
+            <button type="submit"  class="btn btn-danger btn-block"
+                style="width: 358px;margin-left:-8px;background-color: red;"><i class="heart fa fa-heart-o my-auto" style="color:rgb(26, 102, 208)"></i> Submit</button>
+
+            <!-- <input type="submit" id="favbtn" class="btn btn-primary" name="add-fav" value="Add to Favourites"> -->
+        </span>
+    </form>          
+
+</div>
+
+<div class="comment_diplay">
+    <h4>comment area</h4>
+    {% if all_comments %}
+    {% for comment in all_comments %}  
+    <div class="user_name">
+        <h3>user:{{comment.user.username}}</h3>
+    </div> 
+    <div class="comment_text">
+        <h3>comment text:{{comment.text}}</h3>
+    </div> 
+    <div class="comment_time">
+        <h3>time:{{comment.date}}</h3>
+    </div> 
+    {% endfor %}
+    {% else %}
+    <h3>no comments for this song now!Come and comment above!</h3>
+    {% endif %}
+</div>
+<!--!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!-->
 
 <footer class="footer">
     <div class="player" style="padding-left: 10px;padding-top:10px;background-color: #459dfb;">
