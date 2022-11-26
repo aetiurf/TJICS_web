@@ -1,73 +1,4 @@
-/* body {
-    font-family: 'Montserrat', sans-serif;
-    min-height: 100vh;
-    max-height: 100vh;
-    margin: 0;
-    color: #fff;
-    display: -webkit-box;
-    display: flex;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-            flex-direction: column;
-    background: #222222;
-    background: -webkit-linear-gradient(to top, #232526, #414345);
-  }
-  body a {
-    color: inherit;
-  }
-  body a:not(:hover) {
-    text-decoration: none;
-  }
-  body #link-a-me {
-    position: absolute;
-    bottom: 80px;
-    right: 20px;
-    height: 60px;
-    width: 60px;
-    background: url(https://i.imgur.com/xoxkq1r.png);
-    background-size: cover;
-    z-index: 1;
-    -webkit-animation: pop-in 120s ease-out;
-            animation: pop-in 120s ease-out;
-  }
-  body .content {
-    overflow: hidden;
-    -webkit-box-flex: 1;
-            flex-grow: 1;
-    height: calc(100% - 80px);
-  }
-  body .content .lyrics {
-    padding: 50vh 0;
-    min-height: calc(100vh - 80px);
-    width: calc(100% - 40px);
-    margin: 0 20px;
-    text-align: center;
-    -webkit-transition: all .25s;
-    transition: all .25s;
-    position: relative;
-  }
-  body .content .lyrics > div {
-    position: relative;
-    font-size: 40px;
-    line-height: 80px;
-    color: #666;
-    -webkit-transition: all .25s;
-    transition: all .25s;
-  }
-  body .content .lyrics > div:before {
-    content: attr(note);
-    position: absolute;
-    top: 0px;
-    left: 50%;
-    -webkit-transform: translate(-50%, -50%);
-            transform: translate(-50%, -50%);
-    font-size: 18px;
-  }
-  body .content .lyrics > div.highlighted {
-    color: #fff;
-    font-size: 48px;
-  } */
- body .player {
+  body .player {
     z-index: 10;
     background: #F9F9F9;
     color: #000;
@@ -80,18 +11,16 @@
     -webkit-box-direction: normal;
             flex-direction: row;
   }
+/*************/
   body .player .left {
-    width: 80px;
+    width: 90px;
+    height:90px;
     background-image: none;
     background-size: cover;
-    // 动画持续时间
-    animation:rotateImg 5s;
-    //动画播放次数 infinite:无数次；
-    animation-iteration-count:infinite;
+}
+img#musicico{animation: rotateImg 20s infinite linear ;} 
 
-    -webkit-animation:rotateImg 5s;
-    -webkit-animation-iteration-count: infinite;
-  }
+/***********/
   body .player .right {
     -webkit-box-flex: 1;
             flex-grow: 1;
@@ -126,7 +55,62 @@
             flex-grow: 1;
     height: 32px;
   }
+/************/
+body .comment_submit {
+text-align:center;
+position:absolute;
+}
 
+body .comment_diplay {
+text-align:center;
+margin-left:200px;
+margin-right:200px;
+margin-bottom:50px;
+border-style:solid;
+border-width:1px;
+border-radius:10px;
+background-color:#DCDCDC;
+}
+
+body .comment_diplay .messege {
+border-style:solid;
+border-width:1px;
+border-radius:10px;
+padding:5px;
+margin:10px;
+background-color: #F9F9F9;
+}
+
+body .comment_diplay .messege .user_name{
+width: fit-content;
+height: fit-content;
+//line-height: 10px;
+font-size: 18px;
+font-weight:bold;
+padding: 6px;
+margin:4px;
+border-radius: 30px;
+background-color: lightblue;
+border: none;
+text-align:center;
+}
+
+body .comment_diplay .messege .comment_text{
+padding: 10px;
+font-size: 18px;
+}
+
+body .comment_diplay .messege .comment_time{
+font-size: 10px;
+}
+
+body .comment_submit .textarea {
+border-style:solid 1px;
+border-radius:25px;
+padding-left:200px;
+}
+/***********/
+  
   @-webkit-keyframes pop-in {
     0%, 95% {
       -webkit-transform: translateY(100%);
@@ -137,7 +121,7 @@
               transform: translateY(0%);
     }
   }
-
+  
   @keyframes pop-in {
     0%, 95% {
       -webkit-transform: translateY(100%);
@@ -148,12 +132,9 @@
               transform: translateY(0%);
     }
   }
-  @keyframes rotateImg {
-    0% {transform : rotate(0deg);}
-    100% {transform : rotate(360deg);}
-  }
-
-  @-webkit-keyframes rotateImg {
-      0%{-webkit-transform : rotate(0deg);}
-    100%{-webkit-transform : rotate(360deg);}
-  }
+/**********/ 
+@keyframes rotateImg {
+        from { transform: rotate(0) }
+        to { transform: rotate(360deg) }
+}
+/*********/
