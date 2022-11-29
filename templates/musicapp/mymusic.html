@@ -10,13 +10,17 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+
 </head>
 {% block body %}
-
+<style>
+div{
+background:#4ABDAC
+}
 </style>
-<br>
 
-<div class="container p-3 my-3 bg-primary text-white">
+<br>
+<div class="container p-3 my-3 text-white" >
     <a href="{% url 'playlist' %}">
         <h1 style="color: antiquewhite;">Playlist</h1>
     </a>
@@ -24,7 +28,7 @@
         <p style="color: antiquewhite;">Browse through your created playlist here.</p>
     </a>
 </div>
-<div class="container p-3 my-3 bg-primary text-white">
+<div class="container p-3 my-3 text-white">
     <a href="{% url 'favourite' %}">
         <h1 style="color: antiquewhite;">Favourites</h1>
     </a>
