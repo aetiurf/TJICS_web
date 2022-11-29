@@ -2,7 +2,6 @@
 {% load socialaccount %}
 {% block title %} All Songs {% endblock title %}
 {% block body %}
-
 <br>
 <div class="container">
   <div class="col-md-13">
@@ -77,9 +76,9 @@
 <br>
 <br>
 <br>
-/**********************/
+
 <footer class="footer">
-    <div class="player" style="padding-left: 10px;padding-top:10px;background-color: #459dfb;">
+    <div class="player" style="padding-left: 10px;padding-top:10px;background-color: #4ABDAC;">
         <div class="left" >
              <img src="{{last_played.album.cover.url}}" height="90" width="90"
                 style="border-radius: 100%;" id="musicico" onclick="musiccc()"></div>
@@ -123,5 +122,5 @@ function musiccc(){
 }
 
 </script>
-/**********************/
+
 {% endblock body %}

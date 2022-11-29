@@ -59,7 +59,7 @@
 
                     <form method="post">
                         {% csrf_token %}
-                        <button style="float: left;" type="button" class="btn btn-primary" data-toggle="modal"
+                        <button style="float: left;" type="button" class="btn btn-primary" data-toggle="modal" 
                             data-target="#exampleModal" data-whatever="@mdo"><i class="fa fa-plus" aria-hidden="true"></i> Create New Playlist</button>
                         <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
                             aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -81,7 +81,7 @@
                                         </form>
                                     </div>
                                     <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary"
+                                        <button style="background:#DCDCDC" type="button" class="btn" 
                                             data-dismiss="modal">Close</button>
                                         <button type="Submit" class="btn btn-primary">Create Playlist</button>
                                     </div>
@@ -92,7 +92,7 @@
 
                     <form method="post">
                         {% csrf_token %}
-                        <select style="margin-left: 10px;width: 170px;" class="btn btn-success"
+                        <select style="margin-left: 10px;width: 170px;background-color:#4484CE" class="btn"
                             onChange="form.submit();" name="playlist">
                             <option selected="selected" disabled style="color: black;">Add to Playlist</option>
                             {% if playlists %}
@@ -109,13 +109,13 @@
                         <span class="d-flex align-items-center mt-2 ml-2">
                             <!-- <i class="heart fa fa-heart my-auto"></i> -->
                             <button type="submit" name="rm-fav" class="btn btn-danger btn-block"
-                                style="width: 358px;margin-left:-8px;background-color: red;">Remove from Favourites</button>
+                                style="width: 358px;margin-left:-8px;background-color: #FC4A1A;">Remove from Favourites</button>
                         </span>
                         {% else %}
                         <span class="d-flex align-items-center mt-2 ml-2">
                             <!-- <i class="heart fa fa-heart my-auto"></i> -->
                             <button type="submit" name="add-fav" class="btn btn-danger btn-block"
-                                style="width: 358px;margin-left:-8px;background-color: red;"><i class="heart fa fa-heart-o my-auto" style="color:white"></i> Add to Favourites</button>
+                                style="width: 358px;margin-left:-8px;background-color: #FC4A1A;"><i class="heart fa fa-heart-o my-auto" style="color:white"></i> Add to Favourites</button>
 
                             <!-- <input type="submit" id="favbtn" class="btn btn-primary" name="add-fav" value="Add to Favourites"> -->
                         </span>
@@ -130,7 +130,7 @@
     </div>
 </div>
 <!--!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!-->
-<br>
+<h3 style="position:absolute;left:210px;">comment area</h3>
 <div class="comment_submit">
     <form method="post">
         {% csrf_token %}
@@ -141,7 +141,7 @@
                     input type="text" placeholder="please leave your comments here"/ ></textarea>
             </div>
             <button type="submit" class="btn btn-danger btn-block"
-             style="width: 100px;margin-left:8px;margin-top:20px;background-color: red;">Subimt</button>
+             style="width: 100px;margin-left:8px;margin-top:20px;background-color:  #FC4A1A;">Subimt</button>
 
             <!-- <input type="submit" id="favbtn" class="btn btn-primary" name="add-fav" value="Add to Favourites"> -->
         </span>
@@ -154,7 +154,6 @@
 <br>
 
 <div class="comment_diplay">
-    <h3>comment area</h3>
     {% if all_comments %}
     {% for comment in all_comments %}  
       <div class="messege">
@@ -175,9 +174,8 @@
 </div>
 
 <!--!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!-->
-/**********************/
 <footer class="footer">
-    <div class="player" style="padding-left: 10px;padding-top:10px;background-color: #459dfb;">
+    <div class="player" style="padding-left: 10px;padding-top:10px;background-color: #4ABDAC;">
         <div class="left" >
              <img src="{{last_played.album.cover.url}}" height="90" width="90"
                 style="border-radius: 100%;" id="musicico" onclick="musiccc()"></div>
@@ -221,7 +219,6 @@ function musiccc(){
 }
 
 </script>
-/**********************/
 {% endblock body %}
 
 

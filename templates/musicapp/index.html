@@ -14,7 +14,7 @@
                   value="{{ request.GET.q }}" placeholder= "Search Songs "/>
                                 
                   <span class='input-group-btn mx-2'>
-                    <button type="submit" style="border-radius: 5px;" class="btn btn-primary">Search</button>
+                    <button type="submit" style="border-radius: 5px;" class="btn">Search</button>
                   </span>
               </div>
           </div>
@@ -48,7 +48,7 @@
           </div>
       </div>
       {% endfor %}
-      <a href="{% url 'recent' %}" class="btn btn-primary float-right" style="height: 135px;"><center style="margin-top: 45px;">View all <i class="fa fa-arrow-right" aria-hidden="true"></i></center></a>
+      <a href="{% url 'recent' %}" class="btn float-right" style="height: 135px;color:antiquewhite;"><center style="margin-top: 45px;">View all <i class="fa fa-arrow-right" aria-hidden="true"></i></center></a>
 
 </div>
 
@@ -62,7 +62,7 @@
 {% if not query_search %}
 
   <header class="section-heading">
-    <!-- <a href="{% url 'all_songs' %}" class="btn btn-primary float-right">View all</a> -->
+    <!-- <a href="{% url 'all_songs' %}" class="btn float-right" style="color:antiquewhite;">View all</a> -->
     <h5 class="section-title">ALL SONGS</h5>
   </header>
 <hr>
@@ -83,7 +83,7 @@
       {% endfor %}
       {% endif %}
       {% if not query_search %}
-      <a href="{% url 'all_songs' %}" class="btn btn-primary float-right" style="height: 135px;"><center style="margin-top: 45px;">View all <i class="fa fa-arrow-right" aria-hidden="true"></i></center></a>
+      <a href="{% url 'all_songs' %}" class="btn float-right" style="height: 135px;color:antiquewhite;"><center style="margin-top: 45px;">View all <i class="fa fa-arrow-right" aria-hidden="true"></i></center></a>
       {% endif %}
     </div>
 <br>
@@ -113,7 +113,7 @@
       {% endfor %}
       {% endif %}
       {% if not query_search %}
-      <a href="{% url 'chinese_songs' %}" class="btn btn-primary float-right" style="height: 135px;"><center style="margin-top: 45px;">View all <i class="fa fa-arrow-right" aria-hidden="true"></i></center></a>
+      <a href="{% url 'chinese_songs' %}" class="btn float-right" style="height: 135px;color:antiquewhite;"><center style="margin-top: 45px;">View all <i class="fa fa-arrow-right" aria-hidden="true"></i></center></a>
       {% endif %}
 </div>
 <br>
@@ -142,7 +142,7 @@
       {% endfor %}
       {% endif %}
       {% if not query_search %}
-      <a href="{% url 'english_songs' %}" class="btn btn-primary float-right" style="height: 135px;"><center style="margin-top: 45px;">View all <i class="fa fa-arrow-right" aria-hidden="true"></i></center></a>
+      <a href="{% url 'english_songs' %}" class="btn float-right" style="height: 135px;color:antiquewhite;"><center style="margin-top: 45px;">View all <i class="fa fa-arrow-right" aria-hidden="true"></i></center></a>
       {% endif %}
     </div>
 </div>
@@ -152,9 +152,8 @@
 <br>
 <br>
 
-/**********************/
 <footer class="footer">
-    <div class="player" style="padding-left: 10px;padding-top:10px;background-color: #459dfb;">
+    <div class="player" style="padding-left: 10px;padding-top:10px;background-color: #4ABDAC;">
         <div class="left" >
              <img src="{{last_played.album.cover.url}}" height="90" width="90"
                 style="border-radius: 100%;" id="musicico" onclick="musiccc()"></div>
@@ -198,5 +197,4 @@ function musiccc(){
 }
 
 </script>
-/**********************/
 {% endblock body %}
