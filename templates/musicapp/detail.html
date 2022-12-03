@@ -20,16 +20,16 @@
         <strong>Failed!</strong> {{message}}
         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
             <span aria-hidden="true">&times;</span>
-        </button>    
+        </button>
     </div>
     {% else %}
     <div class="alert alert-success">
-    <strong>success</strong> {{message}}
+        <strong>success</strong> {{message}}
         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
             <span aria-hidden="true">&times;</span>
-        </button>   
-    </div>   
-        {% endif %}
+        </button>
+    </div>
+    {% endif %}
     {% endfor %}
 </ul>
 {% endif %}
@@ -59,8 +59,9 @@
 
                     <form method="post">
                         {% csrf_token %}
-                        <button style="float: left;" type="button" class="btn btn-primary" data-toggle="modal" 
-                            data-target="#exampleModal" data-whatever="@mdo"><i class="fa fa-plus" aria-hidden="true"></i> Create New Playlist</button>
+                        <button style="float: left;" type="button" class="btn btn-primary" data-toggle="modal"
+                            data-target="#exampleModal" data-whatever="@mdo"><i class="fa fa-plus"
+                                aria-hidden="true"></i> Create New Playlist</button>
                         <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
                             aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog" role="document">
@@ -81,7 +82,7 @@
                                         </form>
                                     </div>
                                     <div class="modal-footer">
-                                        <button style="background:#DCDCDC" type="button" class="btn" 
+                                        <button style="background:#DCDCDC" type="button" class="btn"
                                             data-dismiss="modal">Close</button>
                                         <button type="Submit" class="btn btn-primary">Create Playlist</button>
                                     </div>
@@ -109,116 +110,121 @@
                         <span class="d-flex align-items-center mt-2 ml-2">
                             <!-- <i class="heart fa fa-heart my-auto"></i> -->
                             <button type="submit" name="rm-fav" class="btn btn-danger btn-block"
-                                style="width: 358px;margin-left:-8px;background-color: #FC4A1A;">Remove from Favourites</button>
+                                style="width: 358px;margin-left:-8px;background-color: #FC4A1A;">Remove from
+                                Favourites</button>
                         </span>
                         {% else %}
                         <span class="d-flex align-items-center mt-2 ml-2">
                             <!-- <i class="heart fa fa-heart my-auto"></i> -->
                             <button type="submit" name="add-fav" class="btn btn-danger btn-block"
-                                style="width: 358px;margin-left:-8px;background-color: #FC4A1A;"><i class="heart fa fa-heart-o my-auto" style="color:white"></i> Add to Favourites</button>
+                                style="width: 358px;margin-left:-8px;background-color: #FC4A1A;"><i
+                                    class="heart fa fa-heart-o my-auto" style="color:white"></i> Add to
+                                Favourites</button>
 
                             <!-- <input type="submit" id="favbtn" class="btn btn-primary" name="add-fav" value="Add to Favourites"> -->
                         </span>
 
                         {% endif %}
                     </form>
-                    
-                    
+
+
                 </div>
             </div>
         </div>
     </div>
 </div>
 <!--!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!-->
-<h3 style="position:absolute;left:210px;">comment area</h3>
-<div class="comment_submit">
-    <form method="post">
-        {% csrf_token %}
-        <span class="d-flex align-items-start mt-2 ml-2">
-            <!-- <i class="heart fa fa-heart my-auto"></i> -->
-            <div class="textarea">
-                <textarea name="comment" id="comment" cols="130" rows="3"  style="border-radius:25px"
-                    input type="text" placeholder="please leave your comments here"/ ></textarea>
+<div class="comment_container">
+    <h3 style="position:absolute;left:210px;">comment area</h3>
+    <div class="comment_submit">
+        <form method="post">
+            {% csrf_token %}
+            <span class="d-flex align-items-start mt-2 ml-2">
+                <!-- <i class="heart fa fa-heart my-auto"></i> -->
+                <div class="textarea">
+                    <textarea name="comment" id="comment" cols="130" rows="3" style="border-radius:25px" input
+                        type="text" placeholder="please leave your comments here" /></textarea>
+                </div>
+                <button type="submit" class="btn btn-danger btn-block"
+                    style="width: 100px;margin-left:8px;margin-top:20px;background-color:  #FC4A1A;">Subimt</button>
+
+                <!-- <input type="submit" id="favbtn" class="btn btn-primary" name="add-fav" value="Add to Favourites"> -->
+            </span>
+        </form>
+    </div>
+
+    <br>
+    <br>
+    <br>
+    <br>
+
+    <div class="comment_diplay">
+        {% if all_comments %}
+        {% for comment in all_comments %}
+        <div class="messege">
+            <div class="user_name" style="float:left">
+                <p>{{comment.user.username}}</p>
             </div>
-            <button type="submit" class="btn btn-danger btn-block"
-             style="width: 100px;margin-left:8px;margin-top:20px;background-color:  #FC4A1A;">Subimt</button>
-
-            <!-- <input type="submit" id="favbtn" class="btn btn-primary" name="add-fav" value="Add to Favourites"> -->
-        </span>
-    </form>          
-
-</div>
-<br>
-<br>
-<br>
-<br>
-
-<div class="comment_diplay">
-    {% if all_comments %}
-    {% for comment in all_comments %}  
-      <div class="messege">
-        <div class="user_name" style="float:left">
-            <p>{{comment.user.username}}</p>
-        </div> 
-        <div class="comment_text" style="float:left">
-            <p> {{comment.text}}</p>
-        </div> 
-        <div class="comment_time" align="left" style="clear:both;color:gray;margin-left:10px">
-            <p>time: {{comment.date}}</p>
-        </div> 
-      </div>
-    {% endfor %}
-    {% else %}
-    <h3>no comments for this song now!Come and comment above!</h3>
-    {% endif %}
+            <div class="comment_text" style="float:left">
+                <p> {{comment.text}}</p>
+            </div>
+            <div class="comment_time" align="left" style="clear:both;color:gray;margin-left:10px">
+                <p>time: {{comment.date}}</p>
+            </div>
+        </div>
+        {% endfor %}
+        {% else %}
+        <h3>no comments for this song now!Come and comment above!</h3>
+        {% endif %}
+    </div>
 </div>
 
 <!--!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!-->
 <footer class="footer">
     <div class="player" style="padding-left: 10px;padding-top:10px;background-color: #4ABDAC;">
-        <div class="left" >
-             <img src="{{last_played.album.cover.url}}" height="90" width="90"
-                style="border-radius: 100%;" id="musicico" onclick="musiccc()"></div>
+        <div class="left">
+            <img src="{{last_played.album.cover.url}}" height="90" width="90" style="border-radius: 100%;" id="musicico"
+                onclick="musiccc()">
+        </div>
         <div class="right">
             <div class="top">
-                <a class="song"  style="margin-left: 15px;color: white;">{{last_played.name}}</a>
+                <a class="song" style="margin-left: 15px;color: white;">{{last_played.name}}</a>
                 <a class="artist" style="margin-left: 15px;color:white">{{last_played.album.name}}</a>
             </div>
-            <div class="bottom"  >
-               <button onclick="musiccc()" style="margin-left:36px ;margin-top:12px;margin-bottom:10px;
+            <div class="bottom">
+                <button onclick="musiccc()" style="margin-left:36px ;margin-top:12px;margin-bottom:10px;
                     width: 34px;height:26px;border: none;border-radius: 100%; z-index:0;"></button>
-                <audio controls=false  _autoplay=""  name="media" id="music"
+                <audio controls=false _autoplay="" name="media" id="music"
                     style="margin-left: -44px;margin-top: 10px;width: 1245px;height:30px;pointer-events:none;">
-                    <source src="{{last_played.song_file.url}}" type="audio/mpeg" ></audio>
+                    <source src="{{last_played.song_file.url}}" type="audio/mpeg">
+                </audio>
             </div>
         </div>
     </div>
 </footer>
 
 <script>
-// 动画旋转
-var music = document.getElementById('music')    //获取音乐
-var musicico = document.getElementById('musicico')   //获取音乐图标
-var tem = false  //设置一个变量，用来控制音乐是否在播放。
-document.getElementById('musicico').style.animationPlayState = 'paused'
+    // 动画旋转
+    var music = document.getElementById('music')    //获取音乐
+    var musicico = document.getElementById('musicico')   //获取音乐图标
+    var tem = false  //设置一个变量，用来控制音乐是否在播放。
+    document.getElementById('musicico').style.animationPlayState = 'paused'
 
 
-//定义一个函数，当用户单击的时候触发这个函数，从而实现音乐的暂停与播放。
-function musiccc(){
-	//tem用来控制音乐当前是否在播放。true代表音乐正在播放，false代表音乐当前正在处于暂停的状态。
-	if(tem == true){
-           music.pause()  //暂停音乐
-		tem = false
-		document.getElementById('musicico').style.animationPlayState = 'paused'  //暂停音乐图标
-		
-	}else{
-		music.play()  //播放音乐
-		tem = true  
-		document.getElementById('musicico').style.animationPlayState = 'running'  //播放音乐图标
-	}
-}
+    //定义一个函数，当用户单击的时候触发这个函数，从而实现音乐的暂停与播放。
+    function musiccc() {
+        //tem用来控制音乐当前是否在播放。true代表音乐正在播放，false代表音乐当前正在处于暂停的状态。
+        if (tem == true) {
+            music.pause()  //暂停音乐
+            tem = false
+            document.getElementById('musicico').style.animationPlayState = 'paused'  //暂停音乐图标
+
+        } else {
+            music.play()  //播放音乐
+            tem = true
+            document.getElementById('musicico').style.animationPlayState = 'running'  //播放音乐图标
+        }
+    }
 
 </script>
 {% endblock body %}
-
-

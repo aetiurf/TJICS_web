@@ -7,6 +7,12 @@
         font-size: 25px;
         color: red;
     }
+
+    body {
+        display: flex;
+        flex-flow: column nowrap;
+        align-items: center;
+    }
 </style>
 {% endblock header %}
 {% block body %}
@@ -28,41 +34,40 @@
                     <h3 class="product-title">Album : {{album.name}}</h3>
                     <h6>Singer: {{album.singer}}</h6>
                     <h6>Release Year: {{album.year}}</h6>
-                    <br>                                                       
+                    <br>
                 </div>
             </div>
         </div>
     </div>
 </div>
 <br>
-<table class="table table-hover" >
+<table class="table table-hover">
     <thead style="background-color:#4ABDAC">
-      <tr>
-        <th scope="col">#</th>
-        <th scope="col">Song Name</th>
-        <th scope="col">Song</th>
-        <th scope="col">More details</th>
-      </tr>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Song Name</th>
+            <th scope="col">Song</th>
+            <th scope="col">More details</th>
+        </tr>
     </thead>
     <tbody>
-      {% if all_songs %}
-      {% for song in all_songs %}
-      <tr>
-        <th scope="row">{{forloop.counter}}</th>
-        <td><a href="{% url 'detail' song.id %}">{{song.name}}</a></td>
-        <td>
-          <audio controls>
-            <source src="{{ song.song_file.url }}" type="audio/mpeg">
-          </audio>
-        </td>
-        <td>
-          <a href="{% url 'detail' song.id%}" class="btn btn-info mt-2 mx-1">see comments</a>
-        </td>
-      </tr>
-      {% endfor %}
-      {% endif %}
+        {% if all_songs %}
+        {% for song in all_songs %}
+        <tr>
+            <th scope="row">{{forloop.counter}}</th>
+            <td><a href="{% url 'detail' song.id %}">{{song.name}}</a></td>
+            <td>
+                <audio controls>
+                    <source src="{{ song.song_file.url }}" type="audio/mpeg">
+                </audio>
+            </td>
+            <td>
+                <a href="{% url 'detail' song.id%}" class="btn btn-info mt-2 mx-1">see comments</a>
+            </td>
+        </tr>
+        {% endfor %}
+        {% endif %}
     </tbody>
-  </table>
+</table>
 
 {% endblock body %}
-

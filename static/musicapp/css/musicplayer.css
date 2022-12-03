@@ -1,153 +1,183 @@
   body .player {
-    z-index: 10;
-    background: #F9F9F9;
-    color: #000;
-    min-height: 80px;
-    max-height: 150px;
-    height: 110px;
-    display: -webkit-box;
-    display: flex;
-    -webkit-box-orient: horizontal;
-    -webkit-box-direction: normal;
-            flex-direction: row;
+      z-index: 10;
+      background: #F9F9F9;
+      color: #000;
+      min-height: 80px;
+      max-height: 150px;
+      height: 110px;
+      display: -webkit-box;
+      display: flex;
+      -webkit-box-orient: horizontal;
+      -webkit-box-direction: normal;
+      flex-direction: row;
   }
-/*************/
+
+  /*************/
   body .player .left {
-    width: 90px;
-    height:90px;
-    background-image: none;
-    background-size: cover;
-}
-img#musicico{animation: rotateImg 20s infinite linear ;} 
+      width: 90px;
+      height: 90px;
+      background-image: none;
+      background-size: cover;
+  }
 
-/***********/
+  img#musicico {
+      animation: rotateImg 20s infinite linear;
+  }
+
+  /***********/
   body .player .right {
-    -webkit-box-flex: 1;
-            flex-grow: 1;
-    display: -webkit-box;
-    display: flex;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-            flex-direction: column;
+      -webkit-box-flex: 1;
+      flex-grow: 1;
+      display: -webkit-box;
+      display: flex;
+      -webkit-box-orient: vertical;
+      -webkit-box-direction: normal;
+      flex-direction: column;
   }
+
   body .player .right .top {
-    -webkit-box-flex: 1;
-            flex-grow: 1;
-    display: -webkit-box;
-    display: flex;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-            flex-direction: column;
-    -webkit-box-pack: center;
-            justify-content: center;
-    padding-left: 10px;
+      -webkit-box-flex: 1;
+      flex-grow: 1;
+      display: -webkit-box;
+      display: flex;
+      -webkit-box-orient: vertical;
+      -webkit-box-direction: normal;
+      flex-direction: column;
+      -webkit-box-pack: center;
+      justify-content: center;
+      padding-left: 10px;
   }
+
   body .player .right .top .song {
-    font-size: 1.2em;
-    font-weight: 600;
+      font-size: 1.2em;
+      font-weight: 600;
   }
+
   body .player .right .bottom {
-    display: -webkit-box;
-    display: flex;
+      display: -webkit-box;
+      display: flex;
   }
+
   body .player .right .bottom video {
-    -webkit-box-flex: 1;
-            flex-grow: 1;
-    height: 32px;
+      -webkit-box-flex: 1;
+      flex-grow: 1;
+      height: 32px;
   }
-/************/
-body .btn{
-    color:white;
-    background:#4ABDAC;
-}
 
-body .table{
-text-align:center;
-width:1100px;
-margin-left:210px;
-margin-right:200px;
-border-style:solid;
-border-width:1px;
-border-radius:50px;
-}
+  /************/
+  body .btn {
+      color: white;
+      background: #4ABDAC;
+  }
 
-body .comment_submit {
-text-align:center;
-position:absolute;
-margin-top:40px;
-}
+  body .table {
+      text-align: center;
+      width: 1100px;
+      margin-left: 210px;
+      margin-right: 200px;
+      border-style: solid;
+      border-width: 1px;
+      border-radius: 50px;
+  }
 
-body .comment_diplay {
-text-align:center;
-margin-left:200px;
-margin-right:200px;
-margin-top:40px;
-margin-bottom:50px;
-}
+  body .comment_submit {
+      text-align: center;
+      position: absolute;
+      margin-top: 40px;
+  }
 
-body .comment_diplay .messege {
-border-style:solid;
-border-width:1px;
-border-radius:10px;
-padding:5px;
-margin:10px;
-background-color: #F9F9F9;
-}
+  body .comment_container {
+    width: 100%;
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: stretch;
+  }
 
-body .comment_diplay .messege .user_name{
-width: fit-content;
-height: 30px;
-font-size: 18px;
-font-weight:bold;
-padding: 8px;
-margin:10px;
-border-radius: 30px;
-background-color: lightblue;
-border: none;
-text-align:center;
-line-height:10px;
-}
+  body .comment_diplay {
+      text-align: center;
+      margin-left: 200px;
+      margin-right: 200px;
+      margin-top: 40px;
+      margin-bottom: 50px;
+  }
 
-body .comment_diplay .messege .comment_text{
-padding: 10px;
-font-size: 18px;
-}
+  body .comment_diplay .messege {
+      border-style: solid;
+      border-width: 1px;
+      border-radius: 10px;
+      padding: 5px;
+      margin: 10px;
+      background-color: #F9F9F9;
+  }
 
-body .comment_diplay .messege .comment_time{
-font-size: 10px;
-}
+  body .comment_diplay .messege .user_name {
+      width: fit-content;
+      height: 30px;
+      font-size: 18px;
+      font-weight: bold;
+      padding: 8px;
+      margin: 10px;
+      border-radius: 30px;
+      background-color: lightblue;
+      border: none;
+      text-align: center;
+      line-height: 10px;
+  }
 
-body .comment_submit .textarea {
-border-style:solid 1px;
-border-radius:25px;
-padding-left:200px;
-}
-/***********/
-  
+  body .comment_diplay .messege .comment_text {
+      padding: 10px;
+      font-size: 18px;
+  }
+
+  body .comment_diplay .messege .comment_time {
+      font-size: 10px;
+  }
+
+  body .comment_submit .textarea {
+      border-style: solid 1px;
+      border-radius: 25px;
+      padding-left: 200px;
+  }
+
+  /***********/
+
   @-webkit-keyframes pop-in {
-    0%, 95% {
-      -webkit-transform: translateY(100%);
-              transform: translateY(100%);
-    }
-    100% {
-      -webkit-transform: translateY(0%);
-              transform: translateY(0%);
-    }
+
+      0%,
+      95% {
+          -webkit-transform: translateY(100%);
+          transform: translateY(100%);
+      }
+
+      100% {
+          -webkit-transform: translateY(0%);
+          transform: translateY(0%);
+      }
   }
-  
+
   @keyframes pop-in {
-    0%, 95% {
-      -webkit-transform: translateY(100%);
-              transform: translateY(100%);
-    }
-    100% {
-      -webkit-transform: translateY(0%);
-              transform: translateY(0%);
-    }
+
+      0%,
+      95% {
+          -webkit-transform: translateY(100%);
+          transform: translateY(100%);
+      }
+
+      100% {
+          -webkit-transform: translateY(0%);
+          transform: translateY(0%);
+      }
   }
-/**********/ 
-@keyframes rotateImg {
-        from { transform: rotate(0) }
-        to { transform: rotate(360deg) }
-}
-/*********/
+
+  /**********/
+  @keyframes rotateImg {
+      from {
+          transform: rotate(0)
+      }
+
+      to {
+          transform: rotate(360deg)
+      }
+  }
+
+  /*********/
