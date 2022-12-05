@@ -9,7 +9,7 @@ import time
 # Create your views here.
 def index(request):
 
-    #Display recent songs
+    # Display recent songs
     if not request.user.is_anonymous:
         recent = list(Recent.objects.filter(user=request.user).values('song_id').order_by('-id'))
         recent_id = [each['song_id'] for each in recent][:5]
@@ -22,7 +22,7 @@ def index(request):
         recent_songs = None
 
     first_time = False
-    #Last played song
+    # Last played song
     if not request.user.is_anonymous:
         last_played_list = list(Recent.objects.filter(user=request.user).values('song_id').order_by('-id'))
         if last_played_list:
@@ -36,10 +36,10 @@ def index(request):
         first_time = True
         last_played_song = Song.objects.all().first()
 
-    #Display all songs
+    # Display all songs
     songs = Song.objects.all()
 
-    #Display few songs on home page
+    # Display few songs on home page
     songs_all = list(Song.objects.all().values('id').order_by('?'))
     sliced_ids = [each['id'] for each in songs_all][:5]
     indexpage_songs = Song.objects.filter(id__in=sliced_ids)
